@@ -211,13 +211,13 @@
             <input
               type="text"
               class="form-control"
-              oninput="handleSearchQuery(event)"
+              oninput=""
             />
             <div class="input-group-append">
               <button
                 class="btn btn-outline-secondary"
                 type="button"
-                onclick="searchImages()"
+                onclick="loadSecondImg(this.closest('.input-group').children[0].value)"
               >
                 Search
               </button>

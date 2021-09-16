@@ -74,8 +74,10 @@ const loadImage = () => {
     });
 };
 
-const loadSecondImg = () => {
-  fetch("https://api.pexels.com/v1/search?query=your-secondary-query", {
+let photos = [];
+
+const loadSecondImg = (query) => {
+  fetch("https://api.pexels.com/v1/search?query=" + query, {
     method: "GET",
     headers: {
       Authorization: "563492ad6f91700001000001aaaca724bb564b948d088b4b473f9bb6",
@@ -93,6 +95,8 @@ const loadSecondImg = () => {
       const row = document.querySelector(".album .row");
 
       row.innerHTML = "";
+
+      photos = body.photos;
 
       const array = body.photos;
       for (let i = 0; i < array.length; i++) {
@@ -161,4 +165,10 @@ function deleteCard(element) {
   // for (let card of document.querySelectorAll(".card")) {
   //   card.remove();
   // }
+}
+
+function searchImages(query) {
+  //console.log(photos.filter(photo => photo.title.toLowercase().includes(query.toLowerCase())));
+
+  loadSecondImg(query);
 }
